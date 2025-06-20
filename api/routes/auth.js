@@ -9,6 +9,7 @@ const ADMIN_SECRET = "admin123456"; // <- Change this to your desired admin pass
 
 // REGISTER
 router.post('/register', async (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ error: 'All fields required.' });
 
@@ -35,6 +36,7 @@ router.post('/register', async (req, res) => {
 
 // LOGIN
 router.post('/login', async (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ error: 'All fields required.' });
 
@@ -66,12 +68,14 @@ router.post('/login', async (req, res) => {
 
 // LOGOUT
 router.post('/logout', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
   res.clearCookie('token');
   res.json({ message: 'Logged out' });
 });
 
 // PROFILE (for persistent login on refresh)
 router.get('/profile', async (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   const token = req.cookies.token;
   if (!token) return res.status(401).json({ error: 'Not logged in' });
   try {
