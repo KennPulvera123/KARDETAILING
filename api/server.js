@@ -27,8 +27,8 @@ function jwtAuth(req, res, next) {
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000', 
-          'https://adv-7aqn.onrender.com',
+  origin: ['http://localhost:3000', 
+          'https://adv-7aqn.onrender.com'],
   credentials: true,
 }));
 app.use(express.json());
