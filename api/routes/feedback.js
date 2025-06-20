@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Middleware: check if user is authenticated
 function auth(req, res, next) {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   const user = req.cookies.user || req.headers['x-user'];
   // This assumes you have a session or JWT system!
   if (req.user) return next();
@@ -14,7 +14,7 @@ function auth(req, res, next) {
 
 // Middleware: check if user is admin
 async function adminCheck(req, res, next) {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   try {
     const user = await User.findById(req.user.id);
     if (user && user.isAdmin) return next();
@@ -26,7 +26,7 @@ async function adminCheck(req, res, next) {
 
 // POST feedback (any logged in user)
 router.post('/', auth, async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   const { rating, comment } = req.body;
   if (!rating || !comment) return res.status(400).json({ error: "Missing data" });
   try {
@@ -44,14 +44,14 @@ router.post('/', auth, async (req, res) => {
 
 // GET all feedback (anyone)
 router.get('/', async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   const feedback = await Feedback.find({}).sort({ createdAt: -1 }).limit(50);
   res.json(feedback);
 });
 
 // DELETE feedback (admin only)
 router.delete('/:id', auth, adminCheck, async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   try {
     await Feedback.findByIdAndDelete(req.params.id);
     res.json({ success: true });

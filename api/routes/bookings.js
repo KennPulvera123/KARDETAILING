@@ -8,7 +8,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "secret123";
 
 // Middleware: Authenticate using JWT token from cookies
 function auth(req, res, next) {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   const token = req.cookies.token;
   if (!token) return res.status(401).json({ error: 'No token' });
   try {
@@ -21,7 +21,7 @@ function auth(req, res, next) {
 
 // Create a new booking (must be logged in)
 router.post('/', auth, async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   try {
     const { name, contact, date, service, notes } = req.body;
     const booking = await Booking.create({
@@ -41,7 +41,7 @@ router.post('/', auth, async (req, res) => {
 
 // Get all bookings for ALL users (for calendar)
 router.get('/', auth, async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   try {
     const bookings = await Booking.find({}).sort({ date: -1 });
     // Always return status (default to "Pending" if not set)
@@ -57,7 +57,7 @@ router.get('/', auth, async (req, res) => {
 
 // --- MARK AS FINISHED ROUTE (Admin only) ---
 router.put('/status/:id', auth, async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   try {
     // Fetch user and check if admin
     const user = await User.findById(req.user.id);

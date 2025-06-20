@@ -5,7 +5,7 @@ const Booking = require('../models/Booking');
 
 // GET user profile by email query param
 router.get('/', async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   try {
     const email = req.query.email;
     if (!email) return res.status(400).json({ error: 'Email query required' });
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 
 // PUT update user profile by email (send JSON with { email, name, contactNumber, address })
 router.put('/', async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
+    
   try {
     const { email, name, contactNumber, address } = req.body;
     if (!email) return res.status(400).json({ error: 'Email required' });
