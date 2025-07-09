@@ -3,94 +3,96 @@ import { useNavigate } from "react-router-dom";
 
 const interiorQuestions = [
   {
-    text: "Overall interior cleanliness",
+    text: "Overall Interior Cleanliness",
+    icon: "🏠",
     options: [
-      { label: "Tidy, just minor dust/crumbs", category: "Light" },
-      { label: "Noticeable dirt, stains, or trash", category: "Moderate" },
-      { label: "Heavy mud, flood debris, or mold", category: "Severe" },
+      { label: "Just needs a quick tidy-up", category: "Light" },
+      { label: "Has visible dirt and some stains", category: "Moderate" },
+      { label: "Very dirty, muddy, or has mold", category: "Severe" },
     ],
   },
   {
-    text: "Interior odor",
+    text: "Interior Smell",
+    icon: "👃",
     options: [
-      { label: "No foul or lingering odors", category: "Light" },
-      { label: "Mild odor or musty smell", category: "Moderate" },
-      { label: "Strong foul/musty odor or damp smell", category: "Severe" },
+      { label: "Smells fresh and clean", category: "Light" },
+      { label: "Has a slight, noticeable odor", category: "Moderate" },
+      { label: "Has a strong, bad smell", category: "Severe" },
     ],
   },
   {
-    text: "Seats and upholstery",
+    text: "Seats & Upholstery",
+    icon: "🪑",
     options: [
-      { label: "Clean, no visible stains", category: "Light" },
-      { label: "Visible dirt, food/drink stains, or pet hair", category: "Moderate" },
-      { label: "Mold, mildew, or water stains", category: "Severe" },
+      { label: "Seats are clean, no stains", category: "Light" },
+      { label: "Seats have stains or pet hair", category: "Moderate" },
+      { label: "Seats are moldy or water-damaged", category: "Severe" },
     ],
   },
   {
-    text: "Floor, carpets, and mats",
+    text: "Carpets & Mats",
+    icon: "🏻",
     options: [
-      { label: "Just a few crumbs, no heavy dirt", category: "Light" },
-      { label: "Visible dirt, mud, or sticky residue", category: "Moderate" },
+      { label: "Light crumbs or dust", category: "Light" },
+      { label: "Visible dirt, mud, or spills", category: "Moderate" },
       { label: "Flooded, soaked, or moldy", category: "Severe" },
     ],
   },
   {
-    text: "Dashboard, vents, and panels",
+    text: "Dashboard & Panels",
+    icon: "🎛️",
     options: [
-      { label: "Mostly clean, no sticky buildup", category: "Light" },
-      { label: "Dusty vents, fingerprints, smudges", category: "Moderate" },
+      { label: "Mostly clean, not sticky", category: "Light" },
+      { label: "Dusty vents or smudges", category: "Moderate" },
       { label: "Sticky, moldy, or water-damaged", category: "Severe" },
     ],
   },
-  {
-    text: "Electrical issues (after water exposure)",
-    options: [
-      { label: "No issues", category: "Light" },
-      { label: "Occasional issues (e.g. sticky buttons)", category: "Moderate" },
-      { label: "Malfunctioning electronics/corroded metal", category: "Severe" },
-    ],
-  }
 ];
 
 const exteriorQuestions = [
   {
-    text: "Body paint condition",
+    text: "Paint Condition",
+    icon: "🎨",
     options: [
-      { label: "Clean, glossy, no scratches", category: "Light" },
-      { label: "Some water spots or minor scratches", category: "Moderate" },
-      { label: "Dull paint, many scratches or oxidation", category: "Severe" },
+      { label: "Shiny and clean, no major flaws", category: "Light" },
+      { label: "Light water spots or fine scratches", category: "Moderate" },
+      { label: "Paint is dull, scratched, or faded", category: "Severe" },
     ],
   },
   {
-    text: "Presence of tar, tree sap, or bird droppings",
+    text: "Stuck-on Grime (Tar, Sap)",
+    icon: "🌳",
     options: [
-      { label: "None", category: "Light" },
-      { label: "A few spots", category: "Moderate" },
-      { label: "Widespread/tough to remove", category: "Severe" },
+      { label: "No stuck-on grime", category: "Light" },
+      { label: "A few spots of tar or sap", category: "Moderate" },
+      { label: "Lots of stuck-on grime", category: "Severe" },
     ],
   },
   {
-    text: "Wheel and tire condition",
+    text: "Wheels & Tires",
+    icon: "🛞",
     options: [
-      { label: "Wheels clean, tires look fresh", category: "Light" },
-      { label: "Noticeable brake dust, road grime", category: "Moderate" },
-      { label: "Heavy dirt/tar build-up, hard-to-clean", category: "Severe" },
+      { label: "Wheels are clean, tires look new", category: "Light" },
+      { label: "Noticeable brake dust or dirt", category: "Moderate" },
+      { label: "Heavy grime, very dirty", category: "Severe" },
     ],
   },
   {
-    text: "Exterior glass (windshield/windows)",
+    text: "Windows & Glass",
+    icon: "🪟",
     options: [
-      { label: "Clean, streak-free", category: "Light" },
-      { label: "Water spots, bug splatters, or light haze", category: "Moderate" },
-      { label: "Hard water stains, sap, heavy residue", category: "Severe" },
+      { label: "Clean and streak-free", category: "Light" },
+      { label: "Water spots or bug splatters", category: "Moderate" },
+      { label: "Hard water stains or heavy grime", category: "Severe" },
     ],
   },
   {
-    text: "Undercarriage & fenders",
+    text: "Undercarriage & Wheel Wells",
+    icon: "🔧",
     options: [
       { label: "Clean or lightly soiled", category: "Light" },
-      { label: "Some mud or road salt/dirt", category: "Moderate" },
-      { label: "Heavy mud, sand, or caked dirt", category: "Severe" },
+      { label: "Some mud or road dirt", category: "Moderate" },
+      { label: "Heavy mud or caked-on dirt", category: "Severe" },
     ],
   }
 ];
@@ -104,40 +106,61 @@ const priceTable = {
 const categoryDetails = {
   Light: {
     label: "🚗 Light Condition",
-    description: (
-      <ul>
-        <li>Minor dust on dashboard and surfaces</li>
-        <li>A few crumbs or small trash items</li>
-        <li>Clean upholstery with no visible stains</li>
-        <li>No foul or lingering odors</li>
-        <li>Vents and panels mostly clean</li>
-      </ul>
-    ),
+    color: "#10b981",
+    bgColor: "linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%)",
+    description: [
+      "Minor dust on dashboard and surfaces",
+      "A few crumbs or small trash items",
+      "Clean upholstery with no visible stains",
+      "No foul or lingering odors",
+      "Vents and panels mostly clean"
+    ],
   },
   Moderate: {
     label: "🚙 Moderate Condition",
-    description: (
-      <ul>
-        <li>Visible dirt on seats, carpets, or floor mats</li>
-        <li>Stains from food or drinks</li>
-        <li>Presence of pet hair or lint buildup</li>
-        <li>Mild odor or musty smell</li>
-        <li>Dust in vents, around buttons, and tight areas</li>
-      </ul>
-    ),
+    color: "#f59e0b",
+    bgColor: "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)",
+    description: [
+      "Visible dirt on seats, carpets, or floor mats",
+      "Stains from food or drinks",
+      "Presence of pet hair or lint buildup",
+      "Mild odor or musty smell",
+      "Dust in vents, around buttons, and tight areas"
+    ],
   },
   Severe: {
     label: "🌊 Severe / Flooded Condition",
-    description: (
-      <ul>
-        <li>Heavy mud, water stains, or debris inside the car</li>
-        <li>Mold or mildew present on upholstery or panels</li>
-        <li>Strong foul odor or damp smell</li>
-        <li>Electrical issues or corrosion from water exposure</li>
-        <li>Sticky or damaged surfaces</li>
-      </ul>
-    ),
+    color: "#dc2626",
+    bgColor: "linear-gradient(135deg, #fee2e2 0%, #fecaca 100%)",
+    description: [
+      "Heavy mud, water stains, or debris inside the car",
+      "Mold or mildew present on upholstery or panels",
+      "Strong foul odor or damp smell",
+      "Electrical issues or corrosion from water exposure",
+      "Sticky or damaged surfaces"
+    ],
   },
+};
+
+const serviceTypeInfo = {
+  interior: {
+    label: "Interior Only",
+    icon: "🏠",
+    color: "#3b82f6",
+    description: "Deep clean cabin, seats, dashboard, and all interior surfaces"
+  },
+  exterior: {
+    label: "Exterior Only", 
+    icon: "✨",
+    color: "#8b5cf6",
+    description: "Wash, polish, and protect paint, wheels, and exterior glass"
+  },
+  both: {
+    label: "Full Service",
+    icon: "🚗",
+    color: "#10b981",
+    description: "Complete interior and exterior detailing package"
+  }
 };
 
 const categoryOrder = ["Severe", "Moderate", "Light"];
@@ -156,6 +179,7 @@ function getMostSevere(answers, questions, section) {
 export default function SelfAssessPage() {
   const [answers, setAnswers] = useState({});
   const [serviceType, setServiceType] = useState("both");
+  const [currentStep, setCurrentStep] = useState(1);
   const navigate = useNavigate();
 
   const handleSelect = (section, qIdx, oIdx) => {
@@ -197,140 +221,524 @@ export default function SelfAssessPage() {
     }
   }
 
+  // Calculate progress
+  const totalQuestions = interiorQuestions.length + exteriorQuestions.length;
+  const answeredQuestions = Object.keys(answers).length;
+  const progress = (answeredQuestions / totalQuestions) * 100;
+
+  const QuestionCard = ({ question, questionIdx, section }) => {
+    const selectedIdx = answers[`${section}_${questionIdx}`];
+
   return (
-    <div
-      style={{
-        maxWidth: 700,
-        margin: "40px auto",
-        padding: 24,
+      <div style={{
         background: "#fff",
-        borderRadius: 16,
-        boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
-      }}
-    >
-      <h1 style={{ fontSize: 28, fontWeight: "bold", marginBottom: 12 }}>Assess your car:</h1>
-      <div style={{ fontSize: 16, color: "#555", marginBottom: 18 }}>
-        Select the most accurate description for each item:
-      </div>
-      {/* INTERIOR SECTION */}
-      <div style={{ fontWeight: 600, margin: "22px 0 10px", fontSize: 18 }}>Interior</div>
-      <form>
-        {interiorQuestions.map((q, qIdx) => (
-          <div key={qIdx} style={{ marginBottom: 18 }}>
-            <div style={{ fontWeight: 500, marginBottom: 7 }}>{q.text}</div>
-            {q.options.map((opt, oIdx) => (
-              <label key={oIdx} style={{ marginRight: 18 }}>
-                <input
-                  type="radio"
-                  name={`interior_${qIdx}`}
-                  value={oIdx}
-                  checked={answers[`interior_${qIdx}`] === oIdx}
-                  onChange={() => handleSelect("interior", qIdx, oIdx)}
-                  style={{ marginRight: 7 }}
-                />
-                {opt.label}
-              </label>
-            ))}
-          </div>
-        ))}
-      </form>
-      {/* EXTERIOR SECTION */}
-      <div style={{ fontWeight: 600, margin: "22px 0 10px", fontSize: 18 }}>Exterior</div>
-      <form>
-        {exteriorQuestions.map((q, qIdx) => (
-          <div key={qIdx} style={{ marginBottom: 18 }}>
-            <div style={{ fontWeight: 500, marginBottom: 7 }}>{q.text}</div>
-            {q.options.map((opt, oIdx) => (
-              <label key={oIdx} style={{ marginRight: 18 }}>
-                <input
-                  type="radio"
-                  name={`exterior_${qIdx}`}
-                  value={oIdx}
-                  checked={answers[`exterior_${qIdx}`] === oIdx}
-                  onChange={() => handleSelect("exterior", qIdx, oIdx)}
-                  style={{ marginRight: 7 }}
-                />
-                {opt.label}
-              </label>
-            ))}
-          </div>
-        ))}
-      </form>
-      {/* SERVICE TYPE CHOICE */}
-      <div style={{ marginTop: 18, marginBottom: 8 }}>
-        <span style={{ fontWeight: "bold", marginRight: 8 }}>
-          Select Service Type:
-        </span>
-        <label style={{ marginRight: 14 }}>
-          <input
-            type="radio"
-            value="interior"
-            checked={serviceType === "interior"}
-            onChange={() => setServiceType("interior")}
-            style={{ marginRight: 5 }}
-          />
-          Interior Only
-        </label>
-        <label style={{ marginRight: 14 }}>
-          <input
-            type="radio"
-            value="exterior"
-            checked={serviceType === "exterior"}
-            onChange={() => setServiceType("exterior")}
-            style={{ marginRight: 5 }}
-          />
-          Exterior Only
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="both"
-            checked={serviceType === "both"}
-            onChange={() => setServiceType("both")}
-            style={{ marginRight: 5 }}
-          />
-          Both
-        </label>
-      </div>
-      {/* RECOMMENDATION BOX */}
-      <div
-        style={{
-          marginTop: 16,
-          padding: 18,
-          background: recommended ? "#e7fbe7" : "#eee",
-          borderRadius: 10,
-          fontSize: 18,
-          fontWeight: "bold",
-          color: "#006622",
-        }}
-      >
-        {recommended ? (
-          <>
-            <div style={{ fontSize: 22, marginBottom: 8 }}>
-              {categoryDetails[recommended].label}
-            </div>
-            <b>Recommended Service:</b>{" "}
-            {serviceType === "both"
-              ? "Full Service"
-              : serviceType === "interior"
-              ? "Interior Only"
-              : "Exterior Only"}
-            <br />
-            <b>Price:</b>{" "}
-            <span
+        borderRadius: "16px",
+        padding: "20px",
+        marginBottom: "20px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+        border: selectedIdx !== undefined ? "2px solid #667eea" : "2px solid #e5e7eb",
+        transition: "all 0.3s ease"
+      }}>
+        <div style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
+          marginBottom: "16px"
+        }}>
+          <span style={{ fontSize: "24px" }}>{question.icon}</span>
+          <h3 style={{
+            fontSize: "16px",
+            fontWeight: "700",
+            color: "#1e293b",
+            margin: 0
+          }}>
+            {question.text}
+          </h3>
+        </div>
+
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px"
+        }}>
+          {question.options.map((opt, oIdx) => (
+            <label 
+              key={oIdx}
               style={{
-                color:
-                  serviceType === "both"
-                    ? "#198754"
-                    : serviceType === "interior"
-                    ? "#0d6efd"
-                    : "#fd7e14",
+                display: "flex",
+                alignItems: "center",
+                padding: "12px",
+                borderRadius: "10px",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                background: selectedIdx === oIdx 
+                  ? "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                  : "#f8fafc",
+                color: selectedIdx === oIdx ? "#fff" : "#374151",
+                border: "1px solid",
+                borderColor: selectedIdx === oIdx ? "#667eea" : "#e5e7eb",
+              }}
+              onMouseEnter={(e) => {
+                if (selectedIdx !== oIdx) {
+                  e.currentTarget.style.borderColor = "#667eea";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (selectedIdx !== oIdx) {
+                  e.currentTarget.style.borderColor = "#e5e7eb";
+                }
               }}
             >
-              ₱{price}
+                <input
+                  type="radio"
+                name={`${section}_${questionIdx}`}
+                  value={oIdx}
+                checked={selectedIdx === oIdx}
+                onChange={() => handleSelect(section, questionIdx, oIdx)}
+                style={{
+                  marginRight: "12px",
+                  transform: "scale(1.2)",
+                  accentColor: "#764ba2"
+                }}
+              />
+              <span style={{
+                fontSize: "14px",
+                fontWeight: selectedIdx === oIdx ? "600" : "500",
+                lineHeight: 1.4
+              }}>
+                {opt.label}
+              </span>
+              
+              {/* Category indicator */}
+              <span style={{
+                marginLeft: "auto",
+                padding: "3px 8px",
+                borderRadius: "8px",
+                fontSize: "11px",
+                fontWeight: "700",
+                flexShrink: 0,
+                background: selectedIdx === oIdx 
+                  ? "rgba(255,255,255,0.2)" 
+                  : opt.category === "Light" ? "#dcfce7"
+                    : opt.category === "Moderate" ? "#fef3c7"
+                    : "#fee2e2",
+                color: selectedIdx === oIdx 
+                  ? "#fff"
+                  : opt.category === "Light" ? "#065f46"
+                    : opt.category === "Moderate" ? "#92400e"
+                    : "#991b1b"
+              }}>
+                {opt.category}
+              </span>
+              </label>
+            ))}
+          </div>
+      </div>
+    );
+  };
+
+  const ServiceTypeCard = ({ type, info }) => {
+    const isSelected = serviceType === type;
+    
+    return (
+      <div 
+        onClick={() => setServiceType(type)}
+        style={{
+          background: isSelected 
+            ? "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+            : "#fff",
+          color: isSelected ? "#fff" : "#374151",
+          border: isSelected ? "2px solid #667eea" : "2px solid #e5e7eb",
+          borderRadius: "16px",
+          padding: "24px",
+          cursor: "pointer",
+          transition: "all 0.3s ease",
+          textAlign: "center"
+        }}
+        onMouseEnter={(e) => {
+          if (!isSelected) {
+            e.target.style.transform = "translateY(-4px)";
+            e.target.style.boxShadow = "0 8px 24px rgba(0,0,0,0.1)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!isSelected) {
+            e.target.style.transform = "translateY(0)";
+            e.target.style.boxShadow = "none";
+          }
+        }}
+      >
+        <div style={{ fontSize: "48px", marginBottom: "16px" }}>
+          {info.icon}
+        </div>
+        <h3 style={{
+          fontSize: "20px",
+          fontWeight: "700",
+          marginBottom: "8px",
+          margin: "0 0 8px 0"
+        }}>
+          {info.label}
+        </h3>
+        <p style={{
+          fontSize: "14px",
+          opacity: 0.8,
+          margin: 0,
+          lineHeight: "1.5"
+        }}>
+          {info.description}
+        </p>
+        
+        {isSelected && (
+          <div style={{
+            marginTop: "16px",
+            padding: "8px 16px",
+            background: "rgba(255,255,255,0.2)",
+            borderRadius: "20px",
+            fontSize: "12px",
+            fontWeight: "600"
+          }}>
+            ✓ Selected
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%)",
+      fontFamily: "'Poppins', sans-serif"
+    }}>
+      {/* Hero Section */}
+      <section style={{
+        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        color: "#fff",
+        padding: "80px 20px",
+        textAlign: "center",
+        position: "relative",
+        overflow: "hidden"
+      }}>
+        <div style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"50\" cy=\"50\" r=\"1\" fill=\"white\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg>')",
+          opacity: 0.3
+        }} />
+        
+        <div style={{ 
+          maxWidth: "800px", 
+          margin: "0 auto", 
+          position: "relative", 
+          zIndex: 1 
+        }}>
+          <div style={{
+            fontSize: "64px",
+            marginBottom: "24px"
+          }}>
+            🔍
+          </div>
+          
+          <h1 style={{
+            fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
+            fontWeight: "800",
+            marginBottom: "24px",
+            background: "linear-gradient(45deg, #fff 30%, #f1f5f9 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            lineHeight: "1.2"
+          }}>
+            Vehicle Assessment
+          </h1>
+          
+          <p style={{
+            fontSize: "clamp(1.1rem, 2.5vw, 1.3rem)",
+            marginBottom: "0",
+            color: "rgba(255,255,255,0.9)",
+            maxWidth: "600px",
+            margin: "0 auto",
+            lineHeight: "1.6"
+          }}>
+            Help us understand your vehicle's condition to recommend the perfect service
+          </p>
+        </div>
+      </section>
+
+      {/* Progress Bar */}
+      <section style={{ padding: "40px 20px 0" }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+          <div style={{
+            background: "#fff",
+            borderRadius: "20px",
+            padding: "24px",
+            marginBottom: "40px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
+          }}>
+            <div style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "12px"
+            }}>
+              <h3 style={{
+                fontSize: "18px",
+                fontWeight: "600",
+                color: "#1e293b",
+                margin: 0
+              }}>
+                Assessment Progress
+              </h3>
+              <span style={{
+                fontSize: "14px",
+                color: "#64748b",
+                fontWeight: "600"
+              }}>
+                {answeredQuestions} of {totalQuestions} questions
+              </span>
+            </div>
+            
+            <div style={{
+              width: "100%",
+              height: "8px",
+              background: "#e5e7eb",
+              borderRadius: "4px",
+              overflow: "hidden"
+            }}>
+              <div style={{
+                width: `${progress}%`,
+                height: "100%",
+                background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)",
+                transition: "width 0.3s ease"
+              }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section style={{ padding: "0 20px 60px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          
+          {/* Main Assessment Area */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "40px",
+            alignItems: "flex-start"
+          }}>
+            {/* Interior Column */}
+            <div style={{
+              background: "#fff",
+              borderRadius: "20px",
+              padding: "32px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
+            }}>
+              <h2 style={{
+                fontSize: "24px",
+                fontWeight: "700",
+                color: "#1e293b",
+                marginBottom: "24px",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px"
+              }}>
+                🏠 Interior Assessment
+              </h2>
+              
+              {interiorQuestions.map((question, qIdx) => (
+                <QuestionCard 
+                  key={qIdx}
+                  question={question}
+                  questionIdx={qIdx}
+                  section="interior"
+                />
+              ))}
+            </div>
+
+            {/* Exterior Column */}
+            <div style={{
+              background: "#fff",
+              borderRadius: "20px",
+              padding: "32px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
+            }}>
+              <h2 style={{
+                fontSize: "24px",
+                fontWeight: "700",
+                color: "#1e293b",
+                marginBottom: "24px",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px"
+              }}>
+                ✨ Exterior Assessment
+              </h2>
+              
+              {exteriorQuestions.map((question, qIdx) => (
+                <QuestionCard 
+                  key={qIdx}
+                  question={question}
+                  questionIdx={qIdx}
+                  section="exterior"
+                />
+              ))}
+            </div>
+          </div>
+          
+          {/* Service Type Selection */}
+          <div style={{
+            background: "#fff",
+            borderRadius: "20px",
+            padding: "40px",
+            marginTop: "40px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
+          }}>
+            <h2 style={{
+              fontSize: "24px",
+              fontWeight: "700",
+              color: "#1e293b",
+              marginBottom: "24px",
+              textAlign: "center"
+            }}>
+              Select Your Service Type
+            </h2>
+            
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "20px"
+            }}>
+              {Object.entries(serviceTypeInfo).map(([type, info]) => (
+                <ServiceTypeCard key={type} type={type} info={info} />
+              ))}
+            </div>
+          </div>
+
+          {/* Recommendation */}
+          <div style={{
+            background: recommended ? categoryDetails[recommended].bgColor : "#f1f5f9",
+            borderRadius: "20px",
+            padding: "40px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+            border: recommended ? `2px solid ${categoryDetails[recommended].color}` : "2px solid #e5e7eb",
+            marginTop: '40px'
+          }}>
+        {recommended ? (
+          <>
+                <div style={{
+                  textAlign: "center",
+                  marginBottom: "32px"
+                }}>
+                  <div style={{
+                    fontSize: "64px",
+                    marginBottom: "16px"
+                  }}>
+                    🎯
+                  </div>
+                  
+                  <h2 style={{
+                    fontSize: "28px",
+                    fontWeight: "800",
+                    color: categoryDetails[recommended].color,
+                    marginBottom: "16px"
+                  }}>
+              {categoryDetails[recommended].label}
+                  </h2>
+                  
+                  <div style={{
+                    display: "inline-block",
+                    background: "rgba(255,255,255,0.9)",
+                    borderRadius: "12px",
+                    padding: "16px 24px",
+                    marginBottom: "24px"
+                  }}>
+                    <div style={{
+                      fontSize: "16px",
+                      fontWeight: "600",
+                      color: "#374151",
+                      marginBottom: "8px"
+                    }}>
+                      Recommended Service
+                    </div>
+                    <div style={{
+                      fontSize: "20px",
+                      fontWeight: "700",
+                      color: serviceTypeInfo[serviceType].color
+                    }}>
+                      {serviceTypeInfo[serviceType].label}
+                    </div>
+                  </div>
+
+                  <div style={{
+                    display: "inline-block",
+                    background: categoryDetails[recommended].color,
+                    color: "#fff",
+                    borderRadius: "12px",
+                    padding: "20px 32px"
+                  }}>
+                    <div style={{
+                      fontSize: "14px",
+                      opacity: 0.9,
+                      marginBottom: "4px"
+                    }}>
+                      Estimated Price
+                    </div>
+                    <div style={{
+                      fontSize: "32px",
+                      fontWeight: "800"
+                    }}>
+                      ₱{price?.toLocaleString()}
+                    </div>
+                  </div>
+            </div>
+
+                {/* Service Details */}
+                <div style={{
+                  background: "rgba(255,255,255,0.9)",
+                  borderRadius: "16px",
+                  padding: "24px",
+                  marginBottom: "32px"
+                }}>
+                  <h3 style={{
+                    fontSize: "18px",
+                    fontWeight: "600",
+                    color: "#374151",
+                    marginBottom: "16px"
+                  }}>
+                    What this service includes:
+                  </h3>
+                  <ul style={{
+                    listStyle: "none",
+                    padding: 0,
+                    margin: 0
+                  }}>
+                    {categoryDetails[recommended].description.map((item, idx) => (
+                      <li key={idx} style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        padding: "8px 0",
+                        fontSize: "16px",
+                        color: "#64748b"
+                      }}>
+                        <span style={{
+                          color: categoryDetails[recommended].color,
+                          fontWeight: "600"
+                        }}>
+                          ✓
             </span>
-            {categoryDetails[recommended].description}
-            {/* --- BOOKING BUTTON --- */}
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Book Button */}
+                <div style={{ textAlign: "center" }}>
             <button
               onClick={() => navigate("/booking", {
                 state: {
@@ -342,24 +750,78 @@ export default function SelfAssessPage() {
                 }
               })}
               style={{
-                marginTop: 16,
-                background: "#0d6efd",
+                      background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                 color: "#fff",
                 border: "none",
-                borderRadius: 8,
-                padding: "12px 28px",
-                fontSize: 16,
-                fontWeight: 600,
-                cursor: "pointer"
-              }}
-            >
-              Book this Service
+                      borderRadius: "16px",
+                      padding: "20px 40px",
+                      fontSize: "18px",
+                      fontWeight: "700",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease",
+                      letterSpacing: "0.5px"
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.transform = "translateY(-3px)";
+                      e.target.style.boxShadow = "0 12px 32px rgba(102, 126, 234, 0.3)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = "translateY(0)";
+                      e.target.style.boxShadow = "none";
+                    }}
+                  >
+                    🚀 Book This Service
             </button>
+                </div>
           </>
         ) : (
-          "— Answer all questions to see our recommendation —"
+              <div style={{
+                textAlign: "center",
+                padding: "40px 20px",
+                color: "#64748b"
+              }}>
+                <div style={{
+                  fontSize: "64px",
+                  marginBottom: "24px"
+                }}>
+                  📝
+                </div>
+                <h3 style={{
+                  fontSize: "24px",
+                  fontWeight: "600",
+                  marginBottom: "16px",
+                  color: "#374151"
+                }}>
+                  Complete Your Assessment
+                </h3>
+                <p style={{
+                  fontSize: "16px",
+                  margin: 0,
+                  lineHeight: "1.6"
+                }}>
+                  Answer all questions above to receive our personalized service recommendation and pricing
+                </p>
+                
+                <div style={{
+                  marginTop: "24px",
+                  padding: "16px 24px",
+                  background: "rgba(102, 126, 234, 0.1)",
+                  borderRadius: "12px",
+                  display: "inline-block"
+                }}>
+                  <span style={{
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    color: "#667eea"
+                  }}>
+                    Progress: {Math.round(progress)}% Complete
+                  </span>
+                </div>
+              </div>
         )}
       </div>
+        </div>
+      </section>
     </div>
   );
 }

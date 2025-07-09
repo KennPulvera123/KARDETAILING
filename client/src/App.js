@@ -16,55 +16,230 @@ export const AuthContext = createContext();
 
 function NavBar({ user, onLogout }) {
   return (
-    <nav style={{ background: "#111", padding: "16px", marginBottom: "28px" }}>
-      <Link style={{ color: "#fff", marginRight: "18px", textDecoration: "none" }} to="/">
-        Home
-      </Link>
-      <Link style={{ color: "#fff", marginRight: "18px", textDecoration: "none" }} to="/self-assess">
-        Self-Assessment
-      </Link>
-      <Link style={{ color: "#fff", marginRight: "18px", textDecoration: "none" }} to="/feedback">
-        Feedback
-      </Link>
-      {!user && (
-        <>
-          <Link style={{ color: "#fff", marginRight: "18px", textDecoration: "none" }} to="/login">
-            Login
-          </Link>
-          <Link style={{ color: "#fff", marginRight: "18px", textDecoration: "none" }} to="/register">
-            Register
-          </Link>
-        </>
-      )}
-      {user && (
-        <>
-          <Link style={{ color: "#fff", marginRight: "18px", textDecoration: "none" }} to="/booking">
-            Book Service
-          </Link>
-          <Link style={{ color: "#fff", marginRight: "18px", textDecoration: "none" }} to="/calendar">
-            Calendar
-          </Link>
-          <Link style={{ color: "#fff", marginRight: "18px", textDecoration: "none" }} to="/profile">
-            My Profile
-          </Link>
-          {/* --- ADMIN LINK REMOVED --- */}
-          <span style={{ color: "#fff", marginLeft: "30px" }}>Welcome, {user.email}!</span>
-          <button
-            style={{
-              marginLeft: "24px",
-              padding: "5px 12px",
-              borderRadius: "5px",
-              border: "none",
-              background: "#fff",
-              color: "#111",
-              cursor: "pointer",
-            }}
-            onClick={onLogout}
+    <nav style={{
+      background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      padding: "16px 24px",
+      marginBottom: "0",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+      position: "sticky",
+      top: 0,
+      zIndex: 1000
+    }}>
+      <div style={{
+        maxWidth: "1200px",
+        margin: "0 auto",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexWrap: "wrap"
+      }}>
+        {/* Logo/Brand */}
+        <Link 
+          to="/" 
+          style={{ 
+            color: "#fff", 
+            textDecoration: "none", 
+            fontSize: "24px", 
+            fontWeight: "700",
+            letterSpacing: "1px"
+          }}
+        >
+          KAR DETAILING
+        </Link>
+
+        {/* Navigation Links */}
+        <div style={{ display: "flex", alignItems: "center", gap: "24px", flexWrap: "wrap" }}>
+          <Link 
+            style={{ 
+              color: "#fff", 
+              textDecoration: "none", 
+              padding: "8px 16px",
+              borderRadius: "6px",
+              transition: "all 0.3s ease",
+              fontSize: "16px",
+              fontWeight: "500"
+            }} 
+            to="/"
+            onMouseEnter={(e) => e.target.style.background = "rgba(255,255,255,0.2)"}
+            onMouseLeave={(e) => e.target.style.background = "transparent"}
           >
-            Logout
-          </button>
-        </>
-      )}
+            Home
+          </Link>
+          <Link 
+            style={{ 
+              color: "#fff", 
+              textDecoration: "none", 
+              padding: "8px 16px",
+              borderRadius: "6px",
+              transition: "all 0.3s ease",
+              fontSize: "16px",
+              fontWeight: "500"
+            }} 
+            to="/self-assess"
+            onMouseEnter={(e) => e.target.style.background = "rgba(255,255,255,0.2)"}
+            onMouseLeave={(e) => e.target.style.background = "transparent"}
+          >
+            Self-Assessment
+          </Link>
+          <Link 
+            style={{ 
+              color: "#fff", 
+              textDecoration: "none", 
+              padding: "8px 16px",
+              borderRadius: "6px",
+              transition: "all 0.3s ease",
+              fontSize: "16px",
+              fontWeight: "500"
+            }} 
+            to="/feedback"
+            onMouseEnter={(e) => e.target.style.background = "rgba(255,255,255,0.2)"}
+            onMouseLeave={(e) => e.target.style.background = "transparent"}
+          >
+            Feedback
+          </Link>
+          
+          {!user && (
+            <>
+              <Link 
+                style={{ 
+                  color: "#fff", 
+                  textDecoration: "none", 
+                  padding: "10px 20px",
+                  border: "2px solid rgba(255,255,255,0.3)",
+                  borderRadius: "25px",
+                  transition: "all 0.3s ease",
+                  fontSize: "16px",
+                  fontWeight: "500"
+                }} 
+                to="/login"
+                onMouseEnter={(e) => {
+                  e.target.style.background = "rgba(255,255,255,0.2)";
+                  e.target.style.borderColor = "rgba(255,255,255,0.6)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = "transparent";
+                  e.target.style.borderColor = "rgba(255,255,255,0.3)";
+                }}
+              >
+                Login
+              </Link>
+              <Link 
+                style={{ 
+                  color: "#667eea", 
+                  textDecoration: "none", 
+                  padding: "10px 20px",
+                  background: "#fff",
+                  borderRadius: "25px",
+                  transition: "all 0.3s ease",
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+                }} 
+                to="/register"
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "0 2px 8px rgba(0,0,0,0.1)";
+                }}
+              >
+                Register
+              </Link>
+            </>
+          )}
+          
+          {user && (
+            <>
+              <Link 
+                style={{ 
+                  color: "#fff", 
+                  textDecoration: "none", 
+                  padding: "8px 16px",
+                  borderRadius: "6px",
+                  transition: "all 0.3s ease",
+                  fontSize: "16px",
+                  fontWeight: "500"
+                }} 
+                to="/booking"
+                onMouseEnter={(e) => e.target.style.background = "rgba(255,255,255,0.2)"}
+                onMouseLeave={(e) => e.target.style.background = "transparent"}
+              >
+                Book Service
+              </Link>
+              <Link 
+                style={{ 
+                  color: "#fff", 
+                  textDecoration: "none", 
+                  padding: "8px 16px",
+                  borderRadius: "6px",
+                  transition: "all 0.3s ease",
+                  fontSize: "16px",
+                  fontWeight: "500"
+                }} 
+                to="/calendar"
+                onMouseEnter={(e) => e.target.style.background = "rgba(255,255,255,0.2)"}
+                onMouseLeave={(e) => e.target.style.background = "transparent"}
+              >
+                Calendar
+              </Link>
+              <Link 
+                style={{ 
+                  color: "#fff", 
+                  textDecoration: "none", 
+                  padding: "8px 16px",
+                  borderRadius: "6px",
+                  transition: "all 0.3s ease",
+                  fontSize: "16px",
+                  fontWeight: "500"
+                }} 
+                to="/profile"
+                onMouseEnter={(e) => e.target.style.background = "rgba(255,255,255,0.2)"}
+                onMouseLeave={(e) => e.target.style.background = "transparent"}
+              >
+                My Profile
+              </Link>
+              
+              <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                <span style={{ 
+                  color: "rgba(255,255,255,0.9)", 
+                  fontSize: "14px",
+                  background: "rgba(255,255,255,0.1)",
+                  padding: "6px 12px",
+                  borderRadius: "15px"
+                }}>
+                  {user.email}
+                </span>
+                <button
+                  style={{
+                    padding: "8px 16px",
+                    borderRadius: "20px",
+                    border: "2px solid rgba(255,255,255,0.3)",
+                    background: "transparent",
+                    color: "#fff",
+                    cursor: "pointer",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    transition: "all 0.3s ease"
+                  }}
+                  onClick={onLogout}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = "rgba(255,255,255,0.2)";
+                    e.target.style.borderColor = "rgba(255,255,255,0.6)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = "transparent";
+                    e.target.style.borderColor = "rgba(255,255,255,0.3)";
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
     </nav>
   );
 }

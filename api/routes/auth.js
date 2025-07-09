@@ -17,17 +17,12 @@ router.post('/register', async (req, res) => {
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ error: 'Email already exists' });
 
-    // Check if admin registration secret is used
-    let isAdmin = false;
-    if (password === ADMIN_SECRET) {
-      isAdmin = true;
-    }
-
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ email, password: hashedPassword, isAdmin }); // Pass isAdmin field
+    const user = new User({ email, password: hashedPassword }); // Create regular user (isAdmin defaults to false)
     await user.save();
 
-    res.status(201).json({ message: isAdmin ? 'Registered as admin!' : 'Registered successfully' });
+    console.log(`New user registered: ${email}, isAdmin: ${user.isAdmin}`); // Debug log
+    res.status(201).json({ message: 'Registered successfully' });
   } catch (error) {
     console.error("Registration error:", error);
     res.status(500).json({ error: 'Registration failed' });
@@ -47,6 +42,7 @@ router.post('/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ error: 'Invalid email or password' });
 
+    console.log(`User logging in: ${email}, isAdmin: ${user.isAdmin}`); // Debug log
     // Create and set JWT cookie - now including isAdmin in the payload
     const token = jwt.sign(
       { id: user._id, email: user.email, isAdmin: user.isAdmin },
