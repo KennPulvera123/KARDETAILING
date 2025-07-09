@@ -301,7 +301,7 @@ export default function BookingPage() {
                 padding: "40px",
                 boxShadow: "0 10px 40px rgba(0,0,0,0.1)"
               }}>
-                <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
                   {/* Step 1: Personal Info */}
                   {step === 1 && (
                     <AnimatedSection>
@@ -312,25 +312,25 @@ export default function BookingPage() {
                         </h2>
                         <div style={styles.inputGroup}>
                           <label style={styles.label}>Full Name</label>
-                          <input
-                            type="text"
-                            name="name"
+          <input
+            type="text"
+            name="name"
                             placeholder="Enter your full name"
-                            value={form.name}
-                            onChange={handleChange}
-                            required
+            value={form.name}
+            onChange={handleChange}
+            required
                             style={styles.input}
-                          />
+          />
                         </div>
                         <div style={styles.inputGroup}>
                           <label style={styles.label}>Contact Number</label>
-                          <input
+          <input
                             type="tel"
-                            name="contact"
+            name="contact"
                             placeholder="Enter your contact number"
-                            value={form.contact}
-                            onChange={handleChange}
-                            required
+            value={form.contact}
+            onChange={handleChange}
+            required
                             style={styles.input}
                           />
                         </div>
@@ -408,28 +408,28 @@ export default function BookingPage() {
                         </h2>
                         <div style={styles.inputGroup}>
                           <label style={styles.label}>Select Date</label>
-                          <input
-                            style={styles.input}
-                            type="date"
-                            name="date"
-                            value={form.date}
-                            onChange={handleChange}
-                            required
+          <input
+            style={styles.input}
+            type="date"
+            name="date"
+            value={form.date}
+            onChange={handleChange}
+            required
                             min={today}
-                          />
+          />
                         </div>
                         <div style={styles.inputGroup}>
                           <label style={styles.label}>Select Time</label>
-                          <select
-                            style={styles.input}
-                            name="time"
-                            value={form.time}
-                            onChange={handleChange}
-                            required
-                          >
+          <select
+            style={styles.input}
+            name="time"
+            value={form.time}
+            onChange={handleChange}
+            required
+          >
                             <option value="">Select a time</option>
                             {timeOptions.map((t) => <option key={t} value={t}>{t}</option>)}
-                          </select>
+          </select>
                         </div>
                         <div style={{...styles.buttonGroup, justifyContent: 'space-between'}}>
                           <button 
@@ -536,8 +536,8 @@ export default function BookingPage() {
                 ) : (
                   <div style={{ textAlign: "center", padding: "20px", color: "#64748b" }}>
                     <p>Select a service to see the details and estimated price here.</p>
-                  </div>
-                )}
+            </div>
+          )}
               </div>
             </AnimatedSection>
           </div>

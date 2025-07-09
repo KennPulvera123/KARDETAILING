@@ -41,8 +41,8 @@ function FeedbackPage() {
 
   const fetchFeedbacks = async () => {
     try {
-      const { data } = await api.get("/feedback");
-      setFeedbacks(data);
+    const { data } = await api.get("/feedback");
+    setFeedbacks(data);
     } catch (err) {
       console.error("Failed to fetch feedbacks");
     } finally {
@@ -283,13 +283,13 @@ function FeedbackPage() {
                       }}>
                         Tell us about your experience
                       </label>
-                      <textarea
-                        value={comment}
+            <textarea
+              value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         placeholder="Share your thoughts about our service..."
-                        maxLength={200}
+              maxLength={200}
                         rows={5}
-                        required
+              required
                         style={{
                           width: "100%",
                           padding: "16px",
@@ -385,9 +385,9 @@ function FeedbackPage() {
                         textAlign: "center"
                       }}>
                         {success}
-                      </div>
+          </div>
                     )}
-                  </form>
+        </form>
                 </div>
               </AnimatedSection>
             )}
@@ -415,8 +415,8 @@ function FeedbackPage() {
                   gridTemplateColumns: "1fr 1fr",
                   gap: "24px",
                   marginBottom: "32px"
-                }}>
-                  <div>
+          }}>
+            <div>
                     <div style={{
                       fontSize: "36px",
                       fontWeight: "800",
@@ -445,7 +445,7 @@ function FeedbackPage() {
                       Average Rating
                     </div>
                   </div>
-                </div>
+            </div>
 
                 {!user && (
                   <div style={{
@@ -463,7 +463,7 @@ function FeedbackPage() {
                     </p>
                     <a 
                       href="/login" 
-                      style={{
+                style={{
                         display: "inline-block",
                         background: "#fff",
                         color: "#1e293b",
@@ -608,10 +608,10 @@ function FeedbackPage() {
                                 e.target.style.transform = "scale(1)";
                               }}
                             >
-                              Delete
-                            </button>
-                          )}
-                        </div>
+                Delete
+              </button>
+            )}
+          </div>
                         
                         <p style={{
                           fontSize: "16px",

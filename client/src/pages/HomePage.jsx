@@ -154,8 +154,8 @@ const ServiceCard = ({ icon, title, description }) => {
             onMouseLeave={() => setIsHovered(false)}
         >
             <div style={{ fontSize: '48px', marginBottom: '20px' }}>{icon}</div>
-            <h3 style={{ fontSize: '22px', fontWeight: '700', marginBottom: '16px' }}>{title}</h3>
-            <p style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.6 }}>{description}</p>
+            <h3 style={{ fontSize: '22px', fontWeight: '700', marginBottom: '16px', color: '#FFFFFF' }}>{title}</h3>
+            <p style={{ color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6 }}>{description}</p>
         </div>
     );
 };
@@ -342,7 +342,7 @@ export default function HomePage() {
                 lineHeight: '1.2'
             }}>
                 Revive Your Ride.
-            </h1>
+        </h1>
             <p className="hero-subtitle" style={{
                 fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)',
                 marginBottom: '40px',
@@ -366,8 +366,8 @@ export default function HomePage() {
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease'
               }}>
                 Get an Instant Quote
-              </button>
-            </Link>
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -387,30 +387,40 @@ export default function HomePage() {
       </AnimatedSection>
       
       {/* Services Section */}
-      <AnimatedSection style={{ padding: '100px 20px', background: 'radial-gradient(ellipse at top, #1b2735 0%, #090a0f 100%)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textAlign: 'center', marginBottom: '60px' }}>
-                Our Signature Services
-            </h2>
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: '40px'
-            }}>
-                <ServiceCard icon="✨" title="Interior Revival" description="A meticulous deep clean of your cabin. We vacuum, shampoo, and treat every surface to restore that new-car feel." />
-                <ServiceCard icon="🛡️" title="Exterior Perfection" description="A showroom-quality finish with our multi-step wash, polish, and premium wax or ceramic coating for ultimate protection." />
-                <ServiceCard icon="🌊" title="Disaster Recovery" description="Specialized service for severe conditions, including flood, mold, and heavy odor removal to bring your car back to life." />
-            </div>
+      <div style={{ padding: '80px 0', backgroundColor: '#0a0f1f' }}>
+         <AnimatedSection style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.9)', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '48px', fontWeight: '800', color: '#FFFFFF' }}>Our Signature Services</h2>
+            <p style={{ fontSize: '20px', maxWidth: '700px', margin: '0 auto', color: 'rgba(255,255,255,0.8)' }}>
+                Tailored detailing solutions to meet every need and exceed every expectation.
+            </p>
+        </AnimatedSection>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px', maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+            <ServiceCard 
+                icon="✨"
+                title="Interior Revival"
+                description="A meticulous deep clean of your cabin. We vacuum, shampoo, and treat every surface to restore that new-car feel."
+            />
+            <ServiceCard 
+                icon="🛡️"
+                title="Exterior Perfection"
+                description="A showroom-quality finish with our multi-step wash, polish, and premium wax or ceramic coating for ultimate protection."
+            />
+            <ServiceCard 
+                icon="🌊"
+                title="Disaster Recovery"
+                description="Specialized service for severe conditions including flood, mold, and heavy odor removal to bring your car back to life."
+            />
         </div>
-      </AnimatedSection>
+    </div>
 
       {/* How It Works Section */}
-      <AnimatedSection style={{ padding: '100px 20px', background: '#f8fafc', color: '#111827' }}>
+      <AnimatedSection style={{ padding: '100px 20px', backgroundColor: '#f8fafc' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textAlign: 'center', marginBottom: '60px', color: '#1e293b' }}>
                 Simple, Transparent Process
             </h2>
-            <div style={{
+              <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                 gap: '40px',
@@ -428,8 +438,8 @@ export default function HomePage() {
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textAlign: 'center', marginBottom: '60px', color: '#fff' }}>
                 What Our Clients Say
-            </h2>
-            <div style={{
+        </h2>
+        <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
                 gap: '30px'
