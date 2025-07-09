@@ -28,7 +28,6 @@ const app = express();
 
 app.use(cors({
   origin: ['http://localhost:3000', 
-          'https://adv-7aqn.onrender.com', 
           'https://kardetailing2.onrender.com',
           'https://kar-detailing2.vercel.app/',
           'kar-detailing2-git-main-logi-systems.vercel.app'],
